@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h3 あなたから学びたい人がヒットしました！
+    h4= "件数：" + results_learner.length + "件"
+    each item in results_learner
+        li #{item.user_name}さんの学びたいこと: #{item.want}
+
+    h3 あなたに教えられる人がヒットしました！
+    h4= "件数：" + results_mentor.length + "件"
+    each item in results_mentor
+        li 
+          a(href=`${item.fb_url}`,target='_blank')  #{item.user_name}さんの教えられること: #{item.can}

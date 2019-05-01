@@ -1,0 +1,29 @@
+extends layout
+
+block body
+  div.container
+    div.row
+      div.card
+        form(action="/next", method="post")
+            div.input-field.col.s12
+                input(placeholder='名前', name='name',id='name',type='text',class='validate',value='kimura')
+                label(for='name') Name
+            div.input-field.col.s12
+                input(placeholder='教えられること１', name='can1', id='subject1',type='text',class='validate',value='野球',required)
+                label(for='subject1') 教えられること１                
+            div.input-field.col.s12
+                input(placeholder='教えられること２', name='can2', id='subject2',type='text',class='validate',value='借り入れ',required)
+                label(for='subject2') 教えられること２
+            div.input-field.col.s12
+                input(placeholder='教えられること３', name='can3', id='subject3',type='text',class='validate',value='事業壁打ち',required)
+                label(for='subject3') 教えられること３
+            div.input-field.col.s12
+                input(placeholder='教えて欲しいこと１', name='want_to_learn1', id='want_to_learn1',type='text',class='validate',value='名前付け',required)
+                label(for='want_to_learn1') 教えて欲しいこと１
+            div.input-field.col.s12
+                input(placeholder='教えて欲しいこと２', name='want_to_learn2', id='want_to_learn2',type='text',class='validate',value='資金調達',required)
+                label(for='want_to_learn2') 教えて欲しいこと２
+            div.input-field.col.s12
+                input(placeholder='教えて欲しいこと３', name='want_to_learn3', id='want_to_learn3',type='text',class='validate',value='採用',required)
+                label(for='want_to_learn3') 教えて欲しいこと３
+            include ./button.pug
