@@ -6,7 +6,7 @@ block content
     each item in results_learner
         li #{item.user_name}さんの学びたいこと: #{item.want}
 
-    h5 あなたに教えられる人がヒットしました！
+    h5 あなたの学びたいことを教えられる人がヒットしました！
     h6= "件数：" + results_mentor.length + "件"
     each item in results_mentor
         li 
