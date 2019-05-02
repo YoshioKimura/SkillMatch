@@ -13,9 +13,8 @@ MySQL2 1.6.5
 
 ## 使い方
 
-$ git clone 
+$ git clone https://github.com/YoshioKimura/learnMatch.git
 $ npm install
-
 mysqlConnection.jsを自分のサーバー環境のものに設定
 
 $ nodemon

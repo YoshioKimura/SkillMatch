@@ -20,7 +20,11 @@ app.set('view engine', 'pug');
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie:{
+    // 生存期間（単位：ミリ秒）
+    maxAge : 1000 * 60 * 60 * 24 * 30, // 30日
+  }
 }));
 app.use(logger('dev'));
 app.use(express.json());

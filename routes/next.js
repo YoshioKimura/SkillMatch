@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var connection = require('../mysqlConnection');
+const express = require('express');
+const router = express.Router();
+const connection = require('../mysqlConnection');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,37 +9,52 @@ router.get('/', function(req, res, next) {
     }
     console.log(req.session.user_id);
     const userId = req.session.user_id;
+    const query_can_teach = `SELECT *
+    FROM content_can_teach
+    WHERE can IN (
+      SELECT want
+      FROM content_want_learn
+      where user_id=${userId})`;
 
-
-
-
-
-
-
-    return res.render('next', {
-      title: 'next',
-      results_learner:[],
-      results_mentor:[]
+    const query_want_learn = `
+    SELECT *
+    FROM content_want_learn
+    WHERE want IN (
+    SELECT can
+    FROM content_can_teach
+    where user_id=${userId})`;
+    connection.query(query_want_learn, function (err, rows) {
+      console.log(rows);
+      connection.query(query_can_teach, function (err, rows2) {
+        console.log(rows);
+        console.log(rows2);
+        return res.render(`next`,{
+          title: 'next',
+          results_learner:rows,
+          results_mentor:rows2
+      });
+      
     });
-    next();
+  });
 });
 
 router.post('/',function(req,res,next){
     //var imagePath = result.url;
-    var userId = req.session.user_id;
-    var userName = req.body.name;
-    var can1 = req.body.can1;
-    var can2 = req.body.can2;
-    var can3 = req.body.can3;
-    var want_to_learn1 = req.body.want_to_learn1;
-    var want_to_learn2 = req.body.want_to_learn2;
-    var want_to_learn3 = req.body.want_to_learn3;
+    const userId = req.session.user_id;
+    const userName = req.session.user_name;
+    console.log(userName);
+    const can1 = req.body.can1;
+    const can2 = req.body.can2;
+    const can3 = req.body.can3;
+    const want_to_learn1 = req.body.want_to_learn1;
+    const want_to_learn2 = req.body.want_to_learn2;
+    const want_to_learn3 = req.body.want_to_learn3;
     console.log(want_to_learn1,want_to_learn2,want_to_learn3);
-    // var password = req.body.password;
-      var query = `INSERT INTO content_can_teach (id,user_id,user_name, can) VALUES (NULL,${userId},"${userName}","${can1}"),(NULL,${userId},"${userName}","${can2}"),(NULL,${userId},"${userName}","${can3}")`;
-      var query3 = `INSERT INTO content_want_learn (id,user_id,user_name, want) VALUES (NULL,${userId},"${userName}","${want_to_learn1}"),(NULL,${userId},"${userName}","${want_to_learn2}"),(NULL,${userId},"${userName}","${want_to_learn3}")`;
-      var query2 = `SELECT * FROM content_want_learn WHERE want="${can1}" or want="${can2}" OR want="${can3}"`;//教えて欲しい人をヒットさせる
-      var query4 = `SELECT * FROM content_can_teach WHERE can="${want_to_learn1}" or can="${want_to_learn2}" OR can="${want_to_learn3}"`;//教えられる人をヒットさせる
+    // const password = req.body.password;
+      const query = `INSERT INTO content_can_teach (id,user_id,user_name, can) VALUES (NULL,${userId},"${userName}","${can1}"),(NULL,${userId},"${userName}","${can2}"),(NULL,${userId},"${userName}","${can3}")`;
+      const query3 = `INSERT INTO content_want_learn (id,user_id,user_name, want) VALUES (NULL,${userId},"${userName}","${want_to_learn1}"),(NULL,${userId},"${userName}","${want_to_learn2}"),(NULL,${userId},"${userName}","${want_to_learn3}")`;
+      const query2 = `SELECT * FROM content_want_learn WHERE want="${can1}" or want="${can2}" OR want="${can3}"`;//教えて欲しい人をヒットさせる
+      const query4 = `SELECT * FROM content_can_teach WHERE can="${want_to_learn1}" or can="${want_to_learn2}" OR can="${want_to_learn3}"`;//教えられる人をヒットさせる
     //   var rows5;
     connection.query(query, function (err, rows) {
         // console.log(query);
@@ -61,17 +76,6 @@ router.post('/',function(req,res,next){
 
         });
     });
-});
-
-router.get('/', function(req, res, next) {
-
-    if (req.session.login_id) {
-      res.redirect('/login');
-    } else {
-      res.render('login', {
-        title: 'ログイン'
-      });
-    }
 });
 
 module.exports = router;

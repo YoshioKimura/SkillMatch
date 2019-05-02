@@ -1,6 +1,5 @@
 include layout.pug
 
-
 head
   title= title
   link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
@@ -49,14 +48,16 @@ main
             .input-field.col.s12
               input#login_id.validate(type='text' name='login_id',value='lucky132',required)
               label(for='login_id') Enter your user id
-          p=noUser
-            label(style='float: right;')
-              a.pink-text(href='#!')
+            span=noUser
+            label(style='float: right;color:#F5F5F5;')
                 b Forgot Password?
           br
           center
             .row
-              button.col.s12.btn.btn-large.waves-effect.indigo(type='submit' name='btn_login') Login
+              button.col.s12.btn.btn-large.waves-effect.indigo(type='submit' name='btn_login') ログインする
     a(href='/register') Create account
   .section
   .section
+script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js')
+script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js')
+  
