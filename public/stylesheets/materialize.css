@@ -4314,17 +4314,23 @@ nav .brand-logo {
     padding: 0
 }
 
-nav .brand-logo.center {
-    left: 50%;
+
+
+nav .brand-logo {
+    left: 10%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%)
 }
 
 @media only screen and (max-width: 992px) {
     nav .brand-logo {
-        left: 50%;
+        left: 90px;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%)
+    }
+
+    nav .brand-logo img{
+        height: 50px;
     }
 
     nav .brand-logo.left,
