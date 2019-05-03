@@ -9,10 +9,10 @@ var mysql = require('mysql2');
 // };
 
 var dbConfig = {
-  host: 'us-cdbr-iron-east-03.cleardb.net',
-  user: 'b81de1fc97d0cf',
-  password: '0ea4d4bf',
-  database: 'heroku_570104d33486c83'
+  host: '*************************',
+  user: '*************************',
+  password: '**********',
+  database: '*************************'
 };
 
 var connection;
