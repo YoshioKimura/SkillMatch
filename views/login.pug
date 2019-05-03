@@ -41,12 +41,12 @@ main
             .col.s12
           .row
             .input-field.col.s12
-              input#user_name.validate(type='text' name='user_name',value='yoshiokimura',required)
-              label(for='user_name') Enter your name
+              input#user_name.validate(type='text' name='user_name',value='',required)
+              label(for='user_name') 名前
           .row
             .input-field.col.s12
-              input#login_id.validate(type='text' name='login_id',value='lucky132',required)
-              label(for='login_id') Enter your user id
+              input#login_id.validate(type='text' name='login_id',value='',required)
+              label(for='login_id') ユーザーID
             span=noUser
             label(style='float: right;color:#F5F5F5;')
                 b Forgot Password?
@@ -54,7 +54,7 @@ main
           center
             .row
               button.col.s12.btn.btn-large.waves-effect.indigo(type='submit' name='btn_login') ログインする
-    a(href='/register') Create account
+    a(href='/register') アカウントを作る
   .section
   .section
   
