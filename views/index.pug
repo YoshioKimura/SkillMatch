@@ -5,9 +5,11 @@ block body
     div.row
       div.card
         form(action="/next", method="post")
+          div.row
             //- div.input-field.col.s12
             //-     input(placeholder='名前', name='name',id='name',type='text',class='validate',value='kimura')
             //-     label(for='name') Name
+            h4 教えられること
             div.input-field.col.s12
                 input(placeholder='教えられること１', name='can1', id='subject1',type='text',class='validate',value='野球',required)
                 label(for='subject1') 教えられること１                
@@ -17,6 +19,7 @@ block body
             div.input-field.col.s12
                 input(placeholder='教えられること３', name='can3', id='subject3',type='text',class='validate',value='事業壁打ち',required)
                 label(for='subject3') 教えられること３
+            h4 教えて欲しいこと
             div.input-field.col.s12
                 input(placeholder='教えて欲しいこと１', name='want_to_learn1', id='want_to_learn1',type='text',class='validate',value='名前付け',required)
                 label(for='want_to_learn1') 教えて欲しいこと１
