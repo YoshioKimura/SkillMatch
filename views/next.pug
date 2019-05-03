@@ -1,12 +1,12 @@
 extends layout
 
 block content
-    h5 あなた話せるテーマを聞いてみたい人の一覧
+    h5 あなたが話せるテーマを聞いてみたい人の一覧
     h6= "件数：" + results_learner.length + "件"
     each item in results_learner
         li #{item.user_name}さんの学びたいこと: #{item.want}
 
-    h5 あなたの知りたいテーマを話せる人の一覧
+    h5 あなたが知りたいテーマを話せる人の一覧
     h6= "件数：" + results_mentor.length + "件"
     each item in results_mentor
         li 話せること: #{item.can} #{item.user_name} さん
