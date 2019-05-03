@@ -8,7 +8,17 @@ router.get('/', function(req, res, next) {
     console.log("hogehoge");
     res.render('login');
   }
-  res.render('index', { title: 'Express' });
+  const query_all_can = `SELECT * FROM content_can_teach `
+  connection.query(query_all_can, function (err, rows) {
+    console.log(rows);
+    res.render('index', { 
+      title: 'next',
+      results_all_can:rows
+  });
+  
+});
+
+  
 });
 
 

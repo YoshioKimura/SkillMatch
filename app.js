@@ -41,9 +41,13 @@ app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  showNotFound(res);
 });
 
+var showNotFound = function(res) {
+  res.status(404);
+  res.render("404");
+};
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

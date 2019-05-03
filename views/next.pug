@@ -1,13 +1,15 @@
 extends layout
 
 block content
-    h5 あなたから学びたい人がヒットしました！
+    h5 あなた話せるテーマを聞いてみたい人の一覧
     h6= "件数：" + results_learner.length + "件"
     each item in results_learner
         li #{item.user_name}さんの学びたいこと: #{item.want}
 
-    h5 あなたの学びたいことを教えられる人がヒットしました！
+    h5 あなたの知りたいテーマを話せる人の一覧
     h6= "件数：" + results_mentor.length + "件"
     each item in results_mentor
-        li 
-          a(href=`${item.fb_url}`,target='_blank')  #{item.user_name}さんの教えられること: #{item.can}
+        li 話せること: #{item.can} #{item.user_name} さん
+           a(href=`${item.fb_url}`,target='_blank') 話しかける
+           
+    

@@ -9,24 +9,39 @@ block body
             //- div.input-field.col.s12
             //-     input(placeholder='名前', name='name',id='name',type='text',class='validate',value='kimura')
             //-     label(for='name') Name
-            h4 教えられること
+            h6 他のユーザーが投稿した話せるテーマ
+            .chips.chips-initial
+            h4 学んでみたいテーマ
             div.input-field.col.s12
-                input(placeholder='教えられること１', name='can1', id='subject1',type='text',class='validate',value='',required)
-                label(for='subject1') 教えられること１                
+                input(placeholder='adobe XD', name='want_to_learn1', id='want_to_learn1',type='text',class='validate',value='',required)
+                label(for='want_to_learn1') 学んでみたいテーマ①
             div.input-field.col.s12
-                input(placeholder='教えられること２', name='can2', id='subject2',type='text',class='validate',value='',required)
-                label(for='subject2') 教えられること２
+                input(placeholder='料理', name='want_to_learn2', id='want_to_learn2',type='text',class='validate',value='',required)
+                label(for='want_to_learn2') 学んでみたいテーマ②
             div.input-field.col.s12
-                input(placeholder='教えられること３', name='can3', id='subject3',type='text',class='validate',value='',required)
-                label(for='subject3') 教えられること３
-            h4 教えて欲しいこと
+                input(placeholder='Python', name='want_to_learn3', id='want_to_learn3',type='text',class='validate',value='',required)
+                label(for='want_to_learn3') 学んでみたいテーマ②
+            h4 話せるテーマ
             div.input-field.col.s12
-                input(placeholder='教えて欲しいこと１', name='want_to_learn1', id='want_to_learn1',type='text',class='validate',value='',required)
-                label(for='want_to_learn1') 教えて欲しいこと１
+                input(placeholder='会計', name='can1', id='subject1',type='text',class='validate',value='',required)
+                label(for='subject1') 話せるテーマ①
             div.input-field.col.s12
-                input(placeholder='教えて欲しいこと２', name='want_to_learn2', id='want_to_learn2',type='text',class='validate',value='',required)
-                label(for='want_to_learn2') 教えて欲しいこと２
+                input(placeholder='広島カープ', name='can2', id='subject2',type='text',class='validate',value='',required)
+                label(for='subject2') 話せるテーマ②
             div.input-field.col.s12
-                input(placeholder='教えて欲しいこと３', name='want_to_learn3', id='want_to_learn3',type='text',class='validate',value='',required)
-                label(for='want_to_learn3') 教えて欲しいこと３
+                input(placeholder='カメラ', name='can3', id='subject3',type='text',class='validate',value='',required)
+                label(for='subject3') 話せるテーマ③
             include ./button.pug
+
+            script
+                | let array = [];
+                | let resultsMentor = !{JSON.stringify(results_all_can)};
+                | let result;
+                | console.log(resultsMentor[0].can)
+                | for (let i = 0; i < resultsMentor.length; i++) {
+                | result = array.push({tag:`${resultsMentor[i].can}`});
+                | }
+                | console.log(array);
+                | $('.chips-initial').chips({
+                | data: array
+                | });
