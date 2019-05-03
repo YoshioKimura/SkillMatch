@@ -21,6 +21,7 @@ router.post('/', function(req, res, next) {
       if(rows.length == true){
         userId = rows[0].user_id;
         userName = rows[0].user_name;
+        fbUrl = rows[0].fb_url;
       }else{
         userId = false;
       }
@@ -28,6 +29,7 @@ router.post('/', function(req, res, next) {
       if (userId) {
         req.session.user_id = userId;
         req.session.user_name = userName;
+        req.session.fb_url = fbUrl;
         const query_all_can = `SELECT * FROM content_can_teach`
         connection.query(query_all_can, function(err, rows2) {
           console.log(rows2);
